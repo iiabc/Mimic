@@ -1,6 +1,8 @@
 rootProject.name = "Mimic"
 
 include("plugin")
+include("plugin-bundle")
+include("tools")
 include("project:module-util")
 include("project:module-api")
 include("project:module-config")

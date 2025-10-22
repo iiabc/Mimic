@@ -86,7 +86,3 @@ subprojects {
         useJUnitPlatform()
     }
 }
-
-gradle.buildFinished {
-    buildDir.deleteRecursively()
-}
