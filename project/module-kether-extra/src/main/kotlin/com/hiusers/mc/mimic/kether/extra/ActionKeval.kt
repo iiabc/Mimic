@@ -1,9 +1,5 @@
 package com.hiusers.mc.mimic.kether.extra
 
-import com.notkamui.keval.Keval
-import taboolib.module.kether.KetherParser
-import taboolib.module.kether.combinationParser
-
 /**
  * 数学运算解析
  *
@@ -12,7 +8,7 @@ import taboolib.module.kether.combinationParser
  */
 object ActionKeval {
 
-    @KetherParser(["keval", "math-keval"], namespace = "quest_engine", shared = true)
+    /*@KetherParser(["keval", "math-keval"], namespace = "quest_engine", shared = true)
     fun parser() = combinationParser {
         it.group(
             text(),
@@ -21,6 +17,6 @@ object ActionKeval {
                 Keval.eval(text)
             }
         }
-    }
+    }*/
 
 }

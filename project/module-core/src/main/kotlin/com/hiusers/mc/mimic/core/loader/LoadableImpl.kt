@@ -1,7 +1,7 @@
 package com.hiusers.mc.mimic.core.loader
 
-import com.hiusers.questengine.system.Loadable
-import com.hiusers.questengine.system.Register
+import com.hiusers.mc.mimic.system.Loadable
+import com.hiusers.mc.mimic.system.Register
 import taboolib.common.LifeCycle
 import taboolib.common.inject.ClassVisitor
 import taboolib.common.platform.Awake

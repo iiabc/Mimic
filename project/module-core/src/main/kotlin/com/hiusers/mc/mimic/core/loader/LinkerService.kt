@@ -1,3 +1,4 @@
+/*
 package com.hiusers.mc.mimic.core.loader
 
 import net.byteflux.libby.BukkitLibraryManager
@@ -6,10 +7,12 @@ import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
 import taboolib.platform.util.bukkitPlugin
 
+*/
 /**
  * @author iiabc
  * @since 2025/9/25 15:42
- */
+ *//*
+
 object LinkerService {
 
     @Awake(LifeCycle.INIT)
@@ -62,4 +65,4 @@ object LinkerService {
         libraryManager.loadLibrary(keval)
     }
 
-}
+}*/

@@ -1,10 +1,10 @@
 package com.hiusers.mc.mimic.util
 
 import com.google.gson.Gson
-import com.hiusers.questengine.lang.LangList
-import com.hiusers.questengine.lang.LangText
-import com.hiusers.questengine.lang.LangType
-import com.hiusers.questengine.serializer.GsonProvider
+import com.hiusers.mc.mimic.lang.LangList
+import com.hiusers.mc.mimic.lang.LangText
+import com.hiusers.mc.mimic.lang.LangType
+import com.hiusers.mc.mimic.serializer.GsonProvider
 import taboolib.library.configuration.ConfigurationSection
 import taboolib.module.configuration.Configuration
 

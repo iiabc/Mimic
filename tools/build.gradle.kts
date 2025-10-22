@@ -38,12 +38,12 @@ tasks.register("renameProject") {
         val text = gradleProps.readText()
         val currentGroup = Regex("^group=(.*)$", RegexOption.MULTILINE).find(text)?.groupValues?.get(1)
             ?: "com.hiusers.mc.mimic"
-        val updatedGradleProps = text.replace(Regex("^group=.*$", RegexOption.MULTILINE), "group=${'$'}newGroup")
+        val updatedGradleProps = text.replace(Regex("^group=.*$", RegexOption.MULTILINE), "group=${newGroup}")
 
         // 修改 settings.gradle.kts 的 rootProject.name（先计算结果）
         val settingsFile = rootProject.file("settings.gradle.kts")
         val settingsText = settingsFile.readText()
-        val settingsUpdated = settingsText.replace(Regex("rootProject.name = \\\".*\\\""), "rootProject.name = \"${'$'}newName\"")
+        val settingsUpdated = settingsText.replace(Regex("rootProject.name = \\\".*\\\""), "rootProject.name = \"${newName}\"")
 
         // 目录与包名路径信息
         val oldGroup = currentGroup
@@ -76,8 +76,8 @@ tasks.register("renameProject") {
             srcDir.walkTopDown().forEach { f ->
                 if (f.isFile && f.extension == "kt") {
                     val kt = f.readText()
-                    val ktUpdated = kt.replace("package ${'$'}oldGroup", "package ${'$'}newPackage")
-                        .replace("${'$'}oldGroup.", "${'$'}newPackage.")
+                    val ktUpdated = kt.replace("package ${oldGroup}", "package ${newPackage}")
+                        .replace("${oldGroup}.", "${newPackage}.")
                     if (kt != ktUpdated) plannedFileEdits += f
                 }
             }
@@ -102,8 +102,8 @@ tasks.register("renameProject") {
             srcDir.walkTopDown().forEach { f ->
                 if (f.isFile && f.extension == "kt") {
                     val kt = f.readText()
-                    val ktUpdated = kt.replace("package ${'$'}oldGroup", "package ${'$'}newPackage")
-                        .replace("${'$'}oldGroup.", "${'$'}newPackage.")
+                    val ktUpdated = kt.replace("package ${oldGroup}", "package ${newPackage}")
+                        .replace("${oldGroup}.", "${newPackage}.")
                     if (kt != ktUpdated) f.writeText(ktUpdated)
                 }
             }

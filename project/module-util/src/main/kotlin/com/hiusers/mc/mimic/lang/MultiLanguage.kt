@@ -1,6 +1,6 @@
 package com.hiusers.mc.mimic.lang
 
-import com.hiusers.questengine.util.parseConfigToFlatNodes
+import com.hiusers.mc.mimic.util.parseConfigToFlatNodes
 import taboolib.common.platform.ProxyPlayer
 import taboolib.module.configuration.Type
 import taboolib.module.lang.event.PlayerSelectLocaleEvent
