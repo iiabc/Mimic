@@ -1,6 +1,7 @@
 package com.hiusers.mc.mimic.util
 
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.hiusers.mc.mimic.lang.LangList
 import com.hiusers.mc.mimic.lang.LangText
 import com.hiusers.mc.mimic.lang.LangType
@@ -12,24 +13,24 @@ import taboolib.module.configuration.Configuration
 /**
  * 从 YAML 文件反序列化到 Kotlin 对象
  */
-fun <T> Configuration.deserialize(classifier: Class<T>, gson: Gson = GsonProvider.gson): T {
+inline fun <reified T> Configuration.deserialize(gson: Gson = GsonProvider.gson): T {
     val json = gson.toJson(this.toMap())
-    return gson.fromJson(json, classifier)
+    return gson.fromJson(json, object : TypeToken<T>() {}.type)
 }
 
 /**
  * 从 YAML 文件的指定Key的Section反序列化到 Kotlin 对象
  */
-fun <T> Configuration.deserialize(key: String, classifier: Class<T>, gson: Gson = GsonProvider.gson): T {
+inline fun <reified T> Configuration.deserialize(key: String, gson: Gson = GsonProvider.gson): T {
     val section = this.getConfigurationSection(key)
     val json = gson.toJson(section?.toMap())
-    return gson.fromJson(json, classifier)
+    return gson.fromJson(json, object : TypeToken<T>() {}.type)
 }
 
-fun <T> ConfigurationSection.deserialize(key: String, classifier: Class<T>, gson: Gson = GsonProvider.gson): T {
+inline fun <reified T> ConfigurationSection.deserialize(key: String, gson: Gson = GsonProvider.gson): T {
     val section = this.getConfigurationSection(key)
     val json = gson.toJson(section?.toMap())
-    return gson.fromJson(json, classifier)
+    return gson.fromJson(json, object : TypeToken<T>() {}.type)
 }
 
 /**
@@ -81,8 +82,7 @@ fun parseConfigToFlatNodes(config: Configuration, gson: Gson = GsonProvider.gson
     val nestedMap = configToNestedMap(config)
     // 通过 Gson 序列化后反序列化，确保 Map 结构正确
     val json = gson.toJson(nestedMap)
-    val normalizedMap =
-        gson.fromJson<Map<String, Any>>(json, object : com.google.gson.reflect.TypeToken<Map<String, Any>>() {}.type)
+    val normalizedMap = gson.fromJson<Map<String, Any>>(json, object : TypeToken<Map<String, Any>>() {}.type)
     return flattenNestedMap(normalizedMap)
 }
 
