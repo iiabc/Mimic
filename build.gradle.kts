@@ -21,16 +21,18 @@ subprojects {
     taboolib {
         env {
             install(
-                Basic, Bukkit,
-                BukkitUtil, CommandHelper,
-                Kether
+                Basic,
+                Bukkit,
+                CommandHelper,
+                Kether,
+                BukkitUtil,
+                BukkitNavigation,
             )
         }
         version {
             taboolib = "6.2.3-1a8d7125"
         }
         relocate("top.maplex.arim", "${rootProject.group}.arim")
-        // relocate("com.notkamui.keval", "${rootProject.group}.libs.keval")
         relocate("net.byteflux.libby", "${rootProject.group}.libs.libby")
     }
 
@@ -59,7 +61,6 @@ subprojects {
         // compileOnly("org.jetbrains.exposed:exposed-jdbc:${exposedVersion}")
         // compileOnly("org.jetbrains.exposed:exposed-java-time:${exposedVersion}")
 
-        compileOnly("com.notkamui.libs:keval:1.1.1")
         implementation("net.byteflux:libby-bukkit:1.3.1")
     }
     // 编译配置
